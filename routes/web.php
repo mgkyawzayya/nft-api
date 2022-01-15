@@ -11,12 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware(['auth'])->group( function() {
+    Route::get('/', function () {
+        return redirect('dashboard');
+    });
+    Route::get('/dashboard', 'HomeController@home')->name('dashboard');
+
+    Route::resource('categories', 'CategoryController');
+    Route::resource('nfts', 'NFTController');
 });
-Route::get('/dashboard', 'HomeController@home')->name('dashboard');
 
 Auth::routes(['register' => false, 'reset' => false, 'verify' => false]);
-
-Route::resource('categories', 'CategoryController');
-Route::resource('nfts', 'NFTController');

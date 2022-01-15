@@ -17,5 +17,4 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::apiResource('users', Api\UserApiController::class);
 Route::apiResource('nfts', Api\NFTApiController::class);
